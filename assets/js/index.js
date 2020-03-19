@@ -16,13 +16,12 @@ form.addEventListener("submit", handleSubmit);
 function handleSubmit(e) {
   e.preventDefault();
 
-  let tmb;
-  if (gender.value === "male") {
-    tmb = Math.round(66 + 13.8 * weight.value + 5 * height.value - 6.8 * age.value);
-  } else {
-    tmb = Math.round(655 + 9.6 * weight.value + 1.8 * height.value - 4.7 * age.value);
-  }
-
+  const tmb = (
+   gender.value === "male" 
+    ? Math.round(66 + 13.8 * weight.value + 5 * height.value - 6.8 * age.value)
+    : Math.round(655 + 9.6 * weight.value + 1.8 * height.value - 4.7 * age.value)
+  );
+  
   const maintenance = Math.round(tmb * Number(activityLevel.value));
   const loseWeight = maintenance - 450;
   const gainWeight = maintenance + 450;
